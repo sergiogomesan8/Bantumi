@@ -26,9 +26,10 @@ public class JuegoBantumi {
     }
 
     // Número inicial de semillas
-    private final int numInicialSemillas;
+    private int numInicialSemillas;
 
     private final Date date;
+    private Turno turnoInicio;
 
     /**
      * Constructor
@@ -206,6 +207,14 @@ public class JuegoBantumi {
      */
     public void setTurno(Turno turno) {
         bantumiVM.setTurno(turno);
+    }
+
+    public void setTurnoInicial(Turno turno){
+        this.turnoInicio = turno;
+    }
+
+    public void setNumInicialSemillas(int numero){
+        this.numInicialSemillas = numero;
     }
 
     /**

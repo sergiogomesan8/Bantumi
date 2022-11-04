@@ -36,7 +36,8 @@
     </string>
 
     <!-- Preferencias -->
-    <string name="preferencesText">Ajustes</string>
+    <string name="txtAjustes">Ajustes</string>
+    <string name="txtPreferences">Preferences</string>
     <string name="prefTituloCategoria1">Datos personales</string>
     <string name="prefTituloNombreJugador">Nombre del jugador</string>
     <string name="prefTextoNombreJugador">Pulse para teclear el nombre del jugador</string>
@@ -75,9 +76,21 @@
     <string name="txtPapelera">Papelera</string>
     <string name="txtPapeleraVacia">Papelera vacía</string>
 
-    !-- Ajustes -->
+    <!-- Ajustes -->
     <string name="hint_nombre">Nombre...</string>
     <string name="buttonSave">Guardar</string>
+    <string name="intSemillas">Semillas...</string>
+    <string name="buttonSaveSemillas">Guardar Semillas</string>
 
+    <!-- Preferences -->
+    <string name="preferences">Preferencias</string>
+    <string name="defaultSemillas">4</string>
+    <string name="keySemillas">semillas</string>
+    <string name="txtSemillas">Número de Semillas</string>
+
+    <string name="keyPrimerTurno">primerTurno</string>
+    <string name="txtPrimerTurno">Cambiar turno inicial</string>
+    <string name="txtJugador">Turno inicial del: Jugador</string>
+    <string name="txtRival">Turno inicial del: Rival</string>
 
 </resources>

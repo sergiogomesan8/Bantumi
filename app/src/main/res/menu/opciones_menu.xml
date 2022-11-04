@@ -34,7 +34,13 @@
 
     <item
         android:id="@+id/opcAjustes"
-        android:title="@string/preferencesText"
+        android:title="@string/txtAjustes"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="100"
+        />
+    <item
+        android:id="@+id/opcPreferences"
+        android:title="@string/txtPreferences"
         android:icon="@android:drawable/ic_menu_preferences"
         android:orderInCategory="100"
         />
