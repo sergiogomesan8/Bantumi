@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-	namespace 'es.upm.miw.bantumi'
-    compileSdk 32
+    namespace 'es.upm.miw.bantumi'
+    compileSdk 33
 
     defaultConfig {
         applicationId "es.upm.miw.bantumi"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
     }
@@ -33,6 +33,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation('androidx.preference:preference:1.2.0') {
+        // https://issuetracker.google.com/issues/238425626
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
+    }
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"

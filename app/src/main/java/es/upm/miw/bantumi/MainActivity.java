@@ -1,14 +1,17 @@
 package es.upm.miw.bantumi;
 
-import static java.security.AccessController.getContext;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +21,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Date;
 import java.util.Locale;
 
 import es.upm.miw.bantumi.model.BantumiViewModel;
@@ -37,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     BantumiViewModel bantumiVM;
     MatchViewModel matchViewModel;
     InternalMemoryManager internalMemoryManager;
+    SharedPreferences preferences;
 
+    JuegoBantumi.Turno turno;
     private String name = "";
 
 
@@ -47,9 +51,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instancia el ViewModel y el juego, y asigna observadores a los huecos
-        numInicialSemillas = getResources().getInteger(R.integer.intNumInicialSemillas);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        savePreferences();
         bantumiVM = new ViewModelProvider(this).get(BantumiViewModel.class);
-        juegoBantumi = new JuegoBantumi(bantumiVM, JuegoBantumi.Turno.turnoJ1, numInicialSemillas);
+        juegoBantumi = new JuegoBantumi(bantumiVM, turno, numInicialSemillas);
         matchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
         internalMemoryManager = new InternalMemoryManager();
         crearObservadores();
@@ -133,9 +140,10 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.opcAjustes: // @todo Preferencias
-//                startActivity(new Intent(this, BantumiPrefs.class));
-//                return true;
+           case R.id.opcPreferences: // @todo Preferencias
+                savePreferences();
+                startActivity(new Intent(this, PreferencesActivity.class));
+                return true;
             case R.id.opcAjustes:
                 Intent intentMatch1 = new Intent(MainActivity.this, AjustesActivity.class);
                 startActivityForResult(intentMatch1, 2022);
@@ -253,6 +261,24 @@ public class MainActivity extends AppCompatActivity {
         this.name = name;
     }
 
+
+
+    protected void savePreferences(){
+        numInicialSemillas = Integer.parseInt(preferences.getString(
+                getString(R.string.intSemillas),
+                String.valueOf(R.integer.intNumInicialSemillas)));
+        boolean switchJugadorInicial = preferences.getBoolean(getString(R.string.keyPrimerTurno), false);
+        if(switchJugadorInicial == true){
+            turno = JuegoBantumi.Turno.turnoJ1;
+        }
+        else{
+            turno = JuegoBantumi.Turno.turnoJ1;
+        }
+        if(juegoBantumi != null) {
+            juegoBantumi.setNumInicialSemillas(numInicialSemillas);
+            juegoBantumi.setTurnoInicial(turno);
+        }
+    }
 
 
     protected void saveMatch(){
