@@ -23,6 +23,7 @@
         <SwitchPreference
             android:key="@string/keyPrimerTurno"
             android:title="@string/txtPrimerTurno"
+            android:defaultValue="false"
             android:summaryOff="@string/txtJugador"
             android:summaryOn="@string/txtRival" />
     </PreferenceCategory>

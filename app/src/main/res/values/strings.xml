@@ -89,8 +89,8 @@
     <string name="txtSemillas">Número de Semillas</string>
 
     <string name="keyPrimerTurno">primerTurno</string>
-    <string name="txtPrimerTurno">Primer Turno</string>
-    <string name="txtJugador">Jugador</string>
-    <string name="txtRival">Rival</string>
+    <string name="txtPrimerTurno">Cambiar turno inicial</string>
+    <string name="txtJugador">Turno inicial del: Jugador</string>
+    <string name="txtRival">Turno inicial del: Rival</string>
 
 </resources>
