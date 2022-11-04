@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                 String.valueOf(R.integer.intNumInicialSemillas)));
         boolean switchJugadorInicial = preferences.getBoolean(getString(R.string.keyPrimerTurno), false);
         if(switchJugadorInicial == true){
-            turno = JuegoBantumi.Turno.turnoJ1;
+            turno = JuegoBantumi.Turno.turnoJ2;
         }
         else{
             turno = JuegoBantumi.Turno.turnoJ1;
